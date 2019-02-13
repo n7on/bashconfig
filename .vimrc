@@ -1,4 +1,3 @@
-colorscheme pablo
 syntax on
 set number
 
@@ -13,7 +12,7 @@ set expandtab
 
 :imap ii <Esc>
 
-
+set splitbelow
 
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
@@ -24,5 +23,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'avakhov/vim-yaml'
 Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/tpope/vim-fugitive'
+Plug 'lokaltog/vim-distinguished'
+Plug 'https://github.com/akmassey/vim-codeschool'
 " Initialize plugin system
 call plug#end()
+
+colorscheme distinguished

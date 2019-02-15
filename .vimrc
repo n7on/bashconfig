@@ -1,4 +1,3 @@
-colorscheme pablo
 syntax on
 set number
 
@@ -9,12 +8,15 @@ set tabstop=4
 set shiftwidth=4
 " " On pressing tab, insert 4 spaces
 set expandtab
+set encoding=utf-8
+set autoindent
+set fileformat=unix
 
 set statusline="%f%m%r%h%w [%Y] [0x%02.2B]%< %F%=%4v,%4l %3p%% of %L"
 set laststatus=2
 :imap ii <Esc>
 
-
+set splitbelow
 
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
@@ -25,5 +27,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'avakhov/vim-yaml'
 Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/tpope/vim-fugitive'
+Plug 'lokaltog/vim-distinguished'
+Plug 'https://github.com/akmassey/vim-codeschool'
 " Initialize plugin system
 call plug#end()
+
+colorscheme distinguished

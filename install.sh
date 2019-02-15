@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/bash -xv
+
 cp .bash_profile ~/
 cp .vimrc ~/
 cp .tmux.conf ~/
@@ -8,7 +9,5 @@ if [ ! -f ./plug.vim ] ; then
 fi
 
 mkdir -p ~/.vim/autoload
-
-cp plug.vim ~/.vim/autoload/
-
+mv plug.vim ~/.vim/autoload/
 mkdir -p ~/.vim/plugged

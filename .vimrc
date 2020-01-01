@@ -28,6 +28,7 @@ Plug 'avakhov/vim-yaml'
 Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'lokaltog/vim-distinguished'
+Plug 'https://github.com/altercation/vim-colors-solarized'
 Plug 'https://github.com/akmassey/vim-codeschool'
 " Initialize plugin system
 call plug#end()

@@ -1,11 +1,17 @@
 #!/bin/bash
 
+function echo-ext (){
+
+    echo -e "\e[1;32m - $1 \e[0m"
+}
+
+
 DIR=~
 
 if [[ $EUID -eq 0 ]] ; then
     DIR=/root
 else
-    echo "To have same conf as sudo, run sudo $0"
+    echo-ext "To have same conf as sudo, run sudo $0"
 fi
 
 COMMENT="# bashconfig load"
@@ -27,12 +33,13 @@ if [[ ! -d backup  ]]; then
     cp $DIR/.gitconfig ./backup
     cp $DIR/.vimrc ./backup
 fi
+echo-ext "Backup in $(pwd)/backup"
 
 if [[ ! -f .gitconfig  ]] ; then
     . ./create-git-config.sh
 fi
 
-echo "Copying conf files to $DIR"
+echo-ext "Copying conf files to $DIR"
 cp .bashconfig $DIR/
 cp .tmux.conf $DIR/
 cp .gitconfig $DIR/
@@ -46,6 +53,12 @@ mkdir -p $DIR/.vim/autoload $DIR/.vim/plugged
 
 mv plug.vim $DIR/.vim/autoload/
 
-echo "See README.md for cheat sheet"
 vim -c PlugInstall 
 cp .vimrc $DIR/
+
+if [[ -z $(pip list | grep mdv | awk '{print $2}') ]] ; then 
+    sudo pip install mdv > /dev/null
+fi
+
+echo-ext "# mdv README.md"
+mdv README.md

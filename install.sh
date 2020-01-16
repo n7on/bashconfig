@@ -8,9 +8,14 @@ else
     echo "To have same conf as sudo, run sudo $0"
 fi
 
+if [[ ! -f .gitconfig  ]] ; then
+    . ./create-git-config.sh
+fi
+
 echo "Copying conf files to $DIR"
 cp .bashconfig $DIR/
 cp .tmux.conf $DIR/
+cp .gitconfig $DIR/
 
 curl -s -o plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 

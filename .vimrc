@@ -33,4 +33,4 @@ Plug 'https://github.com/akmassey/vim-codeschool'
 " Initialize plugin system
 call plug#end()
 
-colorscheme distinguished
+colorscheme industry

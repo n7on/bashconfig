@@ -20,6 +20,7 @@
 | nmap |||
 | journalctl | today error logs | journalctl --since today -p err --no-pager |
 | journalctl | NetworkManager error logs since boot | journalctl -b -u NetworkManager |
-| systemctl | list enabled services | systemctl list-unit-files | grep enabled |
-| tar | pack | tar -cvf apa.tar ./apa <br />tar cvfz apa.tar.gz ./apa <br />tar cvfj apa.tar.tb2 ./apa |
-| tar | unpack | tar -xvf apa.tar <br />tar xvfz apa.tar.gz <br />tar xvfj apa.tar.tb2 |
+| systemctl | list enabled services | systemctl list-unit-files \| grep enabled |
+| systemctl | list failed services | systemctl list-units --state=failed  \| grep enabled |
+| tar | pack | tar -cvf apa.tar ./apa ; tar cvfz apa.tar.gz ./apa ; tar cvfj apa.tar.tb2 ./apa |
+| tar | unpack | tar -xvf apa.tar ; tar xvfz apa.tar.gz ; tar xvfj apa.tar.tb2 |

@@ -29,9 +29,9 @@ fi
 
 if [[ ! -d backup  ]]; then
     mkdir backup
-    cp $DIR/.tmux.conf ./backup
-    cp $DIR/.gitconfig ./backup
-    cp $DIR/.vimrc ./backup
+    cp $DIR/.tmux.conf ./backup > /dev/null
+    cp $DIR/.gitconfig ./backup > /dev/null
+    cp $DIR/.vimrc ./backup > /dev/null
 fi
 echo-ext "Backup in $(pwd)/backup"
 
@@ -53,8 +53,8 @@ mkdir -p $DIR/.vim/autoload $DIR/.vim/plugged
 
 mv plug.vim $DIR/.vim/autoload/
 
-vim -c PlugInstall 
 cp .vimrc $DIR/
+vim -c PlugInstall 
 
 if [[ -z $(pip list | grep mdv | awk '{print $2}') ]] ; then 
     sudo pip install mdv > /dev/null

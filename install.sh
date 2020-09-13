@@ -56,9 +56,3 @@ mv plug.vim $DIR/.vim/autoload/
 cp .vimrc $DIR/
 vim -c PlugInstall 
 
-if [[ -z $(pip list | grep mdv | awk '{print $2}') ]] ; then 
-    sudo pip install mdv > /dev/null
-fi
-
-echo-ext "# mdv README.md"
-mdv README.md

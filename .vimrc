@@ -27,10 +27,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'avakhov/vim-yaml'
 Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/tpope/vim-fugitive'
-Plug 'lokaltog/vim-distinguished'
-Plug 'https://github.com/altercation/vim-colors-solarized'
-Plug 'https://github.com/akmassey/vim-codeschool'
+Plug 'https://github.com/morhetz/gruvbox'
 " Initialize plugin system
 call plug#end()
+set t_Co=256
+colorscheme gruvbox 
+autocmd GUIEnter * set vb t_vb=
 
-colorscheme industry
+set background=dark

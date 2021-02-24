@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 function echo-ext (){
 
@@ -24,7 +24,7 @@ EOM
 
 if ! grep --quiet "$COMMENT" $DIR/.bashrc ; then
     
-     printf "\n$COMMENT\n$CODE" >> $DIR/.bashrc
+    printf "\n$COMMENT\n$CODE" >> $DIR/.bashrc
 fi
 
 if [[ ! -d backup  ]]; then
@@ -37,13 +37,13 @@ echo-ext "Backup in $(pwd)/backup"
 
 if [[ ! -f .gitconfig  ]] ; then
     . ./create-git-config.sh
+    cp .gitconfig $DIR/
 fi
 
 echo-ext "Copying conf files to $DIR"
 cp .bashconfig $DIR/
 cp .tmux.conf $DIR/
-cp .gitconfig $DIR/
-
+cp .vimrc $DIR/
 
 
 # install vim modules
@@ -53,6 +53,5 @@ mkdir -p $DIR/.vim/autoload $DIR/.vim/plugged
 
 mv plug.vim $DIR/.vim/autoload/
 
-cp .vimrc $DIR/
 vim -c PlugInstall 
 

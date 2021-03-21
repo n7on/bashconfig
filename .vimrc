@@ -28,10 +28,13 @@ Plug 'avakhov/vim-yaml'
 Plug 'https://github.com/tpope/vim-commentary'
 Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'https://github.com/morhetz/gruvbox'
+Plug 'https://github.com/NLKNguyen/papercolor-theme'
+Plug 'https://github.com/itchyny/lightline.vim'
 " Initialize plugin system
 call plug#end()
 set t_Co=256
-colorscheme gruvbox 
+colorscheme PaperColor
 autocmd GUIEnter * set vb t_vb=
 
 set background=dark
+let g:lightline = {'colorscheme': 'wombat'}

@@ -1,20 +1,38 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-function echo-ext (){
 
-    echo -e "\e[1;32m - $1 \e[0m"
+DIR=$HOME
+
+download-copy(){
+    url=$1
+    local_file=$2
+
+    if [ -f $local_file ];then
+        
+        read -p "Overwrite $local_file (y/n)? " answer
+        case ${answer:0:1} in
+            y|Y )
+                echo "Overwriting $local_file"
+                
+                tmpfile=$(mktemp /tmp/bashconfig.XXXXXX)
+                curl -s -o $tmpfile $url
+                mv $tmpfile $DIR/$local_file
+                ;;
+            * )
+                echo "Skipping $local_file"
+                ;;
+        esac
+    fi
 }
+echo "BashConfig - Preset configs for Bash, Vim and Tmux."
 
 
-DIR=~
+download-copy "https://raw.githubusercontent.com/dud380/bashconfig/master/.bashconfig" $DIR/.bashconfig
+download-copy "https://raw.githubusercontent.com/dud380/bashconfig/master/.tmux.conf" $DIR/.tmux.conf
+download-copy "https://raw.githubusercontent.com/dud380/bashconfig/master/.vimrc" $DIR/.vimrc
 
-if [[ $EUID -eq 0 ]] ; then
-    DIR=/root
-else
-    echo-ext "To have same conf as sudo, run sudo $0"
-fi
-
-COMMENT="# bashconfig load"
+exit 
+COMMENT="# BashConfig load"
 
 read -r -d '' CODE << EOM
 if [ -f ~/.bashconfig ]; then
@@ -25,33 +43,18 @@ EOM
 if ! grep --quiet "$COMMENT" $DIR/.bashrc ; then
     
     printf "\n$COMMENT\n$CODE" >> $DIR/.bashrc
+	print
 fi
 
-if [[ ! -d backup  ]]; then
-    mkdir backup
-    cp $DIR/.tmux.conf ./backup > /dev/null
-    cp $DIR/.gitconfig ./backup > /dev/null
-    cp $DIR/.vimrc ./backup > /dev/null
-fi
-echo-ext "Backup in $(pwd)/backup"
 
-if [[ ! -f .gitconfig  ]] ; then
-    . ./create-git-config.sh
-    cp .gitconfig $DIR/
-fi
-
-echo-ext "Copying conf files to $DIR"
-cp .bashconfig $DIR/
-cp .tmux.conf $DIR/
-cp .vimrc $DIR/
+# install vim.plug
+echo "Installing vim.plug"
+mkdir -p $DIR/.vim/autoload $DIR/.vim/plugged
 
 
 # install vim modules
-curl -s -o plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+curl -s -o $DIR/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-mkdir -p $DIR/.vim/autoload $DIR/.vim/plugged
+vim +PluginInstall +qall
 
-mv plug.vim $DIR/.vim/autoload/
-
-vim -c PlugInstall 
 

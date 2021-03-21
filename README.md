@@ -1,5 +1,5 @@
 # BashConfig #
-`curl -s https://raw.githubusercontent.com/dud380/bashconfig/master/install.sh | bash - `
+`bash <(curl -s https://raw.githubusercontent.com/dud380/bashconfig/master/install.sh)`
 
 # cheat sheet #
 

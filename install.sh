@@ -43,7 +43,6 @@ download-copy "https://raw.githubusercontent.com/dud380/bashconfig/master/.bashc
 download-copy "https://raw.githubusercontent.com/dud380/bashconfig/master/.tmux.conf" $DIR/.tmux.conf
 download-copy "https://raw.githubusercontent.com/dud380/bashconfig/master/.vimrc" $DIR/.vimrc
 
-exit 
 COMMENT="# BashConfig load"
 
 read -r -d '' CODE << EOM
@@ -53,9 +52,7 @@ fi
 EOM
 
 if ! grep --quiet "$COMMENT" $DIR/.bashrc ; then
-    
     printf "\n$COMMENT\n$CODE" >> $DIR/.bashrc
-	print
 fi
 
 

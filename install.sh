@@ -9,14 +9,12 @@ download-copy(){
 
     if [ -f $local_file ];then
         
-        read -p "Overwrite $local_file (y/n)? " answer
+        read -p "Overwrite $local_file? (y/n) " answer
         case ${answer:0:1} in
             y|Y )
-                echo "Overwriting $local_file"
-                
                 tmpfile=$(mktemp /tmp/bashconfig.XXXXXX)
                 curl -s -o $tmpfile $url
-                mv $tmpfile $DIR/$local_file
+                mv $tmpfile $local_file
                 ;;
             * )
                 echo "Skipping $local_file"
@@ -24,8 +22,22 @@ download-copy(){
         esac
     fi
 }
-echo "BashConfig - Preset configs for Bash, Vim and Tmux."
 
+cat << "EOF"
+
+ /$$$$$$$                      /$$        /$$$$$$                       /$$$$$$  /$$          
+| $$__  $$                    | $$       /$$__  $$                     /$$__  $$|__/          
+| $$  \ $$  /$$$$$$   /$$$$$$$| $$$$$$$ | $$  \__/  /$$$$$$  /$$$$$$$ | $$  \__/ /$$  /$$$$$$ 
+| $$$$$$$  |____  $$ /$$_____/| $$__  $$| $$       /$$__  $$| $$__  $$| $$$$    | $$ /$$__  $$
+| $$__  $$  /$$$$$$$|  $$$$$$ | $$  \ $$| $$      | $$  \ $$| $$  \ $$| $$_/    | $$| $$  \ $$
+| $$  \ $$ /$$__  $$ \____  $$| $$  | $$| $$    $$| $$  | $$| $$  | $$| $$      | $$| $$  | $$
+| $$$$$$$/|  $$$$$$$ /$$$$$$$/| $$  | $$|  $$$$$$/|  $$$$$$/| $$  | $$| $$      | $$|  $$$$$$$
+|_______/  \_______/|_______/ |__/  |__/ \______/  \______/ |__/  |__/|__/      |__/ \____  $$
+                                                                                     /$$  \ $$
+                                                                                    |  $$$$$$/
+                                                                                     \______/ 
+              *---------- Preconfigured configs for Bash, Tmux & Vim
+EOF
 
 download-copy "https://raw.githubusercontent.com/dud380/bashconfig/master/.bashconfig" $DIR/.bashconfig
 download-copy "https://raw.githubusercontent.com/dud380/bashconfig/master/.tmux.conf" $DIR/.tmux.conf

@@ -33,7 +33,7 @@ Plug 'https://github.com/itchyny/lightline.vim'
 " Initialize plugin system
 call plug#end()
 set t_Co=256
-colorscheme PaperColor
+" colorscheme PaperColor
 autocmd GUIEnter * set vb t_vb=
 
 set background=dark

@@ -69,6 +69,6 @@ mkdir -p $DIR/.vim/autoload $DIR/.vim/plugged
 # install vim modules
 curl -s -o $DIR/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-vim +PluginInstall +qall
+vim +VimEnter +PluginInstall +qall
 
 

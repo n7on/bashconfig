@@ -7,12 +7,12 @@ download-copy(){
     url=$1
     local_file=$2
 
+    tmpfile=$(mktemp /tmp/bashconfig.XXXXXX)
     if [ -f $local_file ];then
         
         read -p "Overwrite $local_file? (y/n) " answer
         case ${answer:0:1} in
             y|Y )
-                tmpfile=$(mktemp /tmp/bashconfig.XXXXXX)
                 curl -s -o $tmpfile $url
                 mv $tmpfile $local_file
                 ;;
@@ -20,6 +20,11 @@ download-copy(){
                 echo "Skipping $local_file"
                 ;;
         esac
+
+    else
+        curl -s -o $tmpfile $url
+        mv $tmpfile $local_file
+
     fi
 }
 

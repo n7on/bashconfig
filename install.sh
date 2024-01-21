@@ -44,9 +44,9 @@ cat << "EOF"
               *---------- Preconfigured configs for Bash, Tmux & Vim
 EOF
 
-download-copy "https://raw.githubusercontent.com/dud380/bashconfig/master/.bashconfig" $DIR/.bashconfig
-download-copy "https://raw.githubusercontent.com/dud380/bashconfig/master/.tmux.conf" $DIR/.tmux.conf
-download-copy "https://raw.githubusercontent.com/dud380/bashconfig/master/.vimrc" $DIR/.vimrc
+download-copy "https://raw.githubusercontent.com/n7on/bashconfig/master/.bashconfig" $DIR/.bashconfig
+download-copy "https://raw.githubusercontent.com/n7on/bashconfig/master/.tmux.conf" $DIR/.tmux.conf
+download-copy "https://raw.githubusercontent.com/n7on/bashconfig/master/.vimrc" $DIR/.vimrc
 
 COMMENT="# BashConfig load"
 
